@@ -15,8 +15,7 @@ const userSchema = new mongoose.Schema({ // defines schema for user
     },
     password: {
         type: String,
-        required: true,
-        select: false, // so password isn't exposed when fetched
+        required: true, // so password isn't exposed when fetched (i temporarily removed select:false)
         minlength: 8 // password must be at least 8 characters
     },
     profilePicture: {

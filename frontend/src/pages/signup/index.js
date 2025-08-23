@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { signupUser } from './../../apiCalls/auth';
+import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { hideLoader, showLoader } from './../../redux/loaderSlice'; 
 
 function Signup(){
+    const dispatch = useDispatch();
     const [user, setUser] = React.useState({
-            firstname: '',
-            lastname: '',
+            firstName: '',
+            lastName: '',
             email: '',
             password: ''
     });
@@ -14,13 +18,17 @@ function Signup(){
         event.preventDefault(); 
         let response = null;
         try{
+            dispatch(showLoader());
             response = await signupUser(user);
-            if(response.success)
-                alert(response.message);
-            else
-                alert(response.message);
+            dispatch(hideLoader());
+            if(response.success){
+                toast.success(response.message);
+            }else{
+                toast.error(response.message);
+            }
         }catch(error){
-            alert(response.message);
+            dispatch(hideLoader());
+            toast.error(response.message);
         }
     }
     
@@ -31,11 +39,11 @@ function Signup(){
                 </div>
                 <div className="signup-form">
                     <form onSubmit={onFormSubmit}>
-                        <input type="text" placeholder="First Name" value={user.firstname} onChange={(e) => setUser({...user, firstname: e.target.value})}/>
-                        <input type="text" placeholder="Last Name" value={user.lastname} onChange={(e) => setUser({...user, lastname: e.target.value})}/>
+                        <input type="text" placeholder="First Name" value={user.firstName} onChange={(e) => setUser({...user, firstName: e.target.value})}/>
+                        <input type="text" placeholder="Last Name" value={user.lastName} onChange={(e) => setUser({...user, lastName: e.target.value})}/>
                         <input type="text" placeholder="Email Address" value={user.email} onChange={(e) => setUser({...user, email: e.target.value})}/>
                         <input type="password" placeholder="Password" value={user.password} onChange={(e) => setUser({...user, password: e.target.value})}/>
-                        <button>Sign Up</button>
+                        <button>Sign Up</button> 
                     </form>
                 </div>
                 <div className="extras">

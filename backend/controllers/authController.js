@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
     try {
         // check if a user with this email exists
         const user = await User.findOne({ email: req.body.email }); 
-        
+        console.log(1);
         // checks if a user with this email exists
         if(!user) {
             return res.status(400).send({
@@ -56,10 +56,10 @@ router.post('/login', async (req, res) => {
                 success: false
             })
         }
-
+        console.log(1.5);
         // check if the password is correct
         const isValid = await bcrypt.compare(req.body.password, user.password);
-        
+        console.log(2);
         if(!isValid) {
             return res.status(400).send({
                 message: 'Invalid password',
