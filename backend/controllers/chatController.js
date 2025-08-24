@@ -5,8 +5,9 @@ const Chat = require('./../models/chat');
 router.post('/create-new-chat', authMiddleware, async (req, res) => {
     try{
         const chat = new Chat(req.body); // create new chat in database
-        const savedChat = await chat.save(); // save chat
-
+        const savedChat = await chat.save();
+        await savedChat.populate('members');
+        
         res.status(201).send({
             message: 'Chat created successfully',
             success: true,
@@ -22,7 +23,7 @@ router.post('/create-new-chat', authMiddleware, async (req, res) => {
 
 router.get('/get-all-chats', authMiddleware, async (req, res) => {
     try{
-        const chats = await Chat.find({members: {$in: req.body.userId}});
+        const chats = await Chat.find({members: {$in: req.body.userId}}).populate('members').sort({updatedAt: -1}); // gets complete user objects, not just ids
 
         res.status(201).send({
             message: 'All chats fetched successfully',

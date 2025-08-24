@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather", sans-serif;
+}
+
+.login{
+    max-width: 400px;
+    margin: 60px;
+    padding: 30px;
+    border-radius: 16px;
+    background: rgb(255, 234, 176);
+    box-shadow: 0 6px 16px rgba(255, 220, 230, 1);
+    text-align: center;
+}
+
+.login-title h1 {
+    font-size: 4rem; /* 16*4 = 64 px*/
+    font-weight: 700;
+    color: #ff7a00;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+    padding: 12px 14px;
+    border: 2px solid #ffac1c;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: greenyellow;
+    outline: none;
+    box-shadow: 0 0 6px rgba(46, 204, 113, 0.4);
+}
+
+.login-button {
+    background: linear-gradient(135deg, #ff7a00, #ff9e33);
+    color: rgb(61, 61, 61);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.login-button:hover {
+    color: whitesmoke;
+    background: linear-gradient(135deg, #afffd0, #002710);
+    transform: scale(1.05);
+}
+
+.extras {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.extras a{
+    color: rgb(97, 161, 0);
+    font-weight: bold;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.extras a:hover {
+    text-decoration: underline;
+}

@@ -1,6 +1,7 @@
 import Search from "./search";
 import { useState } from "react";
 import UserList from "./userList";
+import './../index.css';
 
 function Sidebar(){
     const [searchKey, setSearchKey] = useState('');

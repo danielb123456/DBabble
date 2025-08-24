@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+/* for symbol icons*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather", sans-serif;
+}
+
+.home-page{
+    background-color:rgb(255, 210, 151);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content{
+    display: flex;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px 10px;
+    flex: 1;
+}
+
+.home-sidebar {
+    width: 30%;
+    padding: 0px 20px;
+}
+
+.app-header{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px 30px;
+    justify-content: space-between;
+    border-bottom: #7a4500 1px solid;
+}
+
+.app-logo {
+    display: flex;
+    flex-wrap: nowrap;
+    color: #944f00;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+i{
+    margin: 5px 10px;
+}
+
+.app-user-profile{
+    display: flex;
+}
+
+.logged-user-name{
+    color: #944f00;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.logged-user-profile-pic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff9900;
+    color: rgb(4, 114, 0);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+.home-sidebar{
+    width: 30%;
+    padding: 0px 20px;
+}
+
+.user-search{
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.user-search-text{
+    width: 100%;
+    height: 40px;
+    padding: 10px 20px;
+    border: 1px solid #944f00;
+    border-radius: 7px;
+    color: #282828;
+}
+
+.user-search-button{
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+}
+
+
+.filtered-user{
+    border-bottom: rgb(255, 196, 119) 1px solid;
+    padding: 10px 10px;
+    color: #944f00;
+    cursor: pointer;
+    background-color: rgb(255, 196, 119);
+}
+
+.selected-user{
+    border-bottom: rgb(255, 196, 119) 1px solid;
+    padding: 10px 10px;
+    color: #0b5a00;
+    cursor: pointer;
+    background-color: rgb(255, 229, 194);
+}
+
+.filter-user-display{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-user-details{
+    width: 60%;
+}
+
+.user-display-name{
+    padding: 1px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.user-display-name{
+    padding: 1px 20px;
+    font-size: 12px;
+}
+
+.user-default-profile-pic, .user-profile-pic, .user-selected-profile-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+.user-default-profile-pic{
+    background-color: #ff9900;
+    color: rgb(114, 78, 0);
+}
+.user-selected-profile-pic{
+    background-color: #ff9900;
+    color: rgb(4, 114, 0);
+}
+
+.user-create-chat{
+    padding: 10px 0px;
+}
+
+.user-create-chat-button{
+    background: linear-gradient(135deg, #ff7a00, #ff9e33);
+    color: rgb(61, 61, 61);
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.user-create-chat-button:hover {
+    color: whitesmoke;
+    background: linear-gradient(135deg, #afffd0, #002710);
+    transform: scale(1.05);
+}
+
+.chat-area{
+    background-color:rgb(255, 239, 216);
+    width: 70%;
+    padding: 20px 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+}
+
+.chat-area-header{
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    border-bottom: rgb(8, 95, 0) 1px solid;
+    text-align: right;
+    font-weight: bold;
+    color: green
+}
+
+.chat-area-message-area{
+    flex:1;
+}
+
+.send-message-box{
+    position: relative;
+}
+
+.send-message-input{
+    width: 100%;
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: green;
+    border: #ff7a00 1px solid;
+}
+
+.send-message-button{
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    color: #ff9e33;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin-top: 5px;
+}

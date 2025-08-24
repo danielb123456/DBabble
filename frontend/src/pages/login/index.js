@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { loginUser } from './../../apiCalls/auth';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { hideLoader, showLoader } from './../../redux/loaderSlice'; 
+import { hideLoader, showLoader } from './../../redux/loaderSlice';
+import './index.css';
 
 function Login(){
     const dispatch = useDispatch();
@@ -43,7 +44,7 @@ function Login(){
                     <form onSubmit={onFormSubmit}>
                         <input type="email" placeholder="Email Address" value={user.email} onChange={(e) => setUser({...user, email: e.target.value})}/>
                         <input type="password" placeholder="Password" value={user.password} onChange={(e) => setUser({...user, password: e.target.value})}/>
-                        <button>Login</button>
+                        <button className="login-button">Login</button>
                     </form>
                 </div>
                 <div className="extras">

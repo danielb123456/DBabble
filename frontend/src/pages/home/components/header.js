@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import './../index.css';
 
 function Header(){
     const { user } = useSelector(state => state.userReducer);
@@ -20,8 +21,9 @@ function Header(){
         <div className='app-header'>
             <div className='app-logo'>
                 <i className='fa fa-comments' aria-hidden='true'></i>
+                DBabble
             </div>
-            <div className='app-options'>
+            <div className='app-user-profile'>
                 <div className='logged-user-name'>{ getFullName() }</div>
                 <div className='logged-user-profile-pic'>{ getInitials() }</div>
             </div>

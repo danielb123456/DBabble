@@ -5,8 +5,10 @@ import { hideLoader, showLoader } from "./../../../redux/loaderSlice";
 import { setAllChats, setSelectedChat } from './../../../redux/usersSlice';
 
 function UserList({searchKey}){
-    const {allUsers, allChats, user: currentUser } = useSelector(state => state.userReducer);
+    const {allUsers, allChats, user: currentUser, selectedChat } = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
+
+    console.log("All Chats (render):", allChats);
 
     // not naming it createNewChat as well (alias)
     const startNewChat = async (searchedUserId) => {
@@ -30,13 +32,20 @@ function UserList({searchKey}){
     }
 
     const openChat = (selectedUserId) => {
-        const chat = allChats.find(chat => chat.members.includes(currentUser._id) &&
-                                           chat.members.includes(selectedUserId)
+        const chat = allChats.find(chat => chat.members.map(m => m._id).includes(currentUser._id) &&
+                                           chat.members.map(m => m._id).includes(selectedUserId)
         );
 
         if(chat){
             dispatch(setSelectedChat(chat));
         }
+    }
+
+    const isSelectedChat = (user) => {
+        if(selectedChat){
+            return selectedChat.members.map(m => m._id).includes(user._id);
+        }
+        return false;
     }
 
     return(
@@ -47,15 +56,15 @@ function UserList({searchKey}){
                     user.firstName.toLowerCase().includes(searchKey.toLowerCase()) ||
                     user.lastName.toLowerCase().includes(searchKey.toLowerCase())) && 
                     searchKey
-                ) || (allChats.some(chat => chat.members.includes(user._id)))
+                ) || (allChats.some(chat => chat.members.map(m => m._id).includes(user._id)))
         })
         .map(user => {
             return (
-        <div class="user-search-filter" onClick={() => openChat(user._id_)} key={user._id}>
-            <div className="filtered-user">
+        <div className="user-search-filter" onClick={() => openChat(user._id)} key={user._id}>
+            <div className={isSelectedChat(user) ? "selected-user" : "filtered-user"}>
                 <div className="filter-user-display">
                     {user.profilePic && <img src={user.profilePic} alt="Profile Pic" className="user-profile-pic"></img>}
-                    {!user.ProfilePic && <div className="user-default-profile-pic">
+                    {!user.profilePic && <div className={isSelectedChat(user) ? "user-selected-profile-pic" : "user-default-profile-pic"}>
                         {
                             user.firstName.charAt(0).toUpperCase() + 
                             user.lastName.charAt(0).toUpperCase()
@@ -70,7 +79,7 @@ function UserList({searchKey}){
                         </div>
                     </div>
                     <div className="user-create-chat">
-                        { !allChats.find(chat => chat.members.includes( user._id )) &&
+                        { !allChats.find(chat => chat.members.map(m => m._id).includes( user._id )) &&
                             <button className="user-create-chat-button" onClick={() => startNewChat(user._id)}>
                                 Create Chat
                             </button>
